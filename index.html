@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Perfect Team – We help startups find their employees</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f4f9;
+      --dark: #0d1f35;
+      --mid: #4a6580;
+      --blue: #1a6eb5;
+      --blue-dark: #155fa0;
+      --card-bg: #ffffff;
+      --border: #dde4ed;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      gap: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--dark);
+      max-width: 700px;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8eef6;
+      border: 1.5px solid var(--border);
+      color: var(--dark);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      letter-spacing: 0.01em;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 16px rgba(26,110,181,0.18);
+    }
+    .cta-btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+    }
+
+    .tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tag {
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      color: var(--dark);
+      background: transparent;
+    }
+
+    /* WHY SECTION */
+    .why {
+      max-width: 640px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+
+    .why-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      padding: 40px 36px;
+      text-align: center;
+    }
+
+    .why-card h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .why-card p {
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .why-card .tagline {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 0.95rem;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>We help startups find their employees</h1>
+    <p>We can find your team for free of charge. Pay only if you like the employees at the end.</p>
+    <span class="badge">No upfront payment. Results first.</span>
+    <a class="cta-btn" href="https://calendly.com/rodion-zhukovskyi/find-your-ai-employee" target="_blank" rel="noopener">Book on Calendly</a>
+    <div class="tags">
+      <span class="tag">AI Employees</span>
+      <span class="tag">Human Employees</span>
+      <span class="tag">Hybrid Teams</span>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="why-card">
+      <h2>Why founders trust us</h2>
+      <p>We keep hiring simple, honest, and result-focused. You always know the process, timeline, and next step before making a decision.</p>
+      <p>Our team screens carefully, communicates clearly, and only charges when you are happy with the people we deliver.</p>
+      <p class="tagline">Trusted process. Transparent pricing. Real outcomes.</p>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>Human Employees</h3>
+      <p>We source and screen high-quality human talent for operations, growth, sales, support, and leadership.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI Employees</h3>
+      <p>We help you identify and set up AI workers for content, customer service, lead qualification, automations, and analytics.</p>
+    </div>
+    <div class="feature-card">
+      <h3>For Everything You Need</h3>
+      <p>From first hire to full team design, we can get you AI or human employees for every function of your startup.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Your Perfect Team · yourperfectteam.com
+  </footer>
+
+</body>
+</html>
