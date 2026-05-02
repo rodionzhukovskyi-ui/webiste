@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://yourperfectteam.com" />
+    <meta property="og:url" content="https://yourperfectteam.com" />
+    <title>Find Your Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0f2438;
+        --muted: #4f6479;
+        --bg: #f4f8fc;
+        --line: #d5e2ee;
+        --primary: #0a5ea8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", Arial, sans-serif;
+        background: radial-gradient(circle at 0 0, #ffffff, var(--bg) 55%);
+        color: var(--ink);
+      }
+
+      .container {
+        width: min(1080px, 92vw);
+        margin: 0 auto;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 92px 0 62px;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: clamp(2rem, 4.7vw, 3.8rem);
+        line-height: 1.05;
+        text-align: center;
+      }
+
+      .subhead {
+        margin: 0 auto;
+        max-width: 56ch;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.7vw, 1.22rem);
+      }
+
+      .highlight {
+        margin: 24px auto 0;
+        display: inline-block;
+        padding: 10px 15px;
+        border: 1px solid #bfd9f2;
+        border-radius: 999px;
+        color: #0b4b83;
+        background: #eaf4ff;
+        font-weight: 700;
+      }
+
+      .cta {
+        margin-top: 18px;
+      }
+
+      .logo-row {
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .logo-pill {
+        border: 1px solid var(--line);
+        background: #ffffff;
+        color: #28435c;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .book-link {
+        display: inline-block;
+        text-decoration: none;
+        font-weight: 700;
+        color: #ffffff;
+        background: linear-gradient(135deg, #0a5ea8, #0b78d2);
+        padding: 11px 18px;
+        border-radius: 999px;
+        box-shadow: 0 10px 24px rgba(10, 94, 168, 0.25);
+      }
+
+      .services {
+        padding: 0 0 24px;
+      }
+
+      .trust {
+        padding: 8px 0 34px;
+      }
+
+      .trust-card {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px 22px;
+      }
+
+      .trust-card h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+      }
+
+      .trust-card p {
+        margin: 0 auto 10px;
+        max-width: 62ch;
+        color: var(--muted);
+      }
+
+      .trust-note {
+        margin: 8px 0 0;
+        font-weight: 700;
+        color: #0b4b83;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .service-card {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .service-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          padding-top: 66px;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>We help startups find their employees</h1>
+          <p class="subhead">
+            We can find your team for free of charge. Pay only if you like the
+            employees at the end.
+          </p>
+          <p class="highlight">No upfront payment. Results first.</p>
+          <p class="cta">
+            <a
+              class="book-link"
+              href="https://yourperfectteam.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Visit yourperfectteam.com</a
+            >
+          </p>
+          <div class="logo-row" aria-label="Service logos">
+            <span class="logo-pill">AI Employees</span>
+            <span class="logo-pill">Human Employees</span>
+            <span class="logo-pill">Hybrid Teams</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust">
+        <div class="container">
+          <div class="trust-card">
+            <h2>Why founders trust us</h2>
+            <p>
+              We keep hiring simple, honest, and result-focused. You always
+              know the process, timeline, and next step before making a
+              decision.
+            </p>
+            <p>
+              Our team screens carefully, communicates clearly, and only
+              charges when you are happy with the people we deliver.
+            </p>
+            <p class="trust-note">Trusted process. Transparent pricing. Real outcomes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="services">
+        <div class="container">
+          <div class="services-grid">
+            <article class="service-card">
+              <h3>Human Employees</h3>
+              <p>
+                We source and screen high-quality human talent for operations,
+                growth, sales, support, and leadership.
+              </p>
+            </article>
+            <article class="service-card">
+              <h3>AI Employees</h3>
+              <p>
+                We help you identify and set up AI workers for content, customer
+                service, lead qualification, automations, and analytics.
+              </p>
+            </article>
+            <article class="service-card">
+              <h3>For Everything You Need</h3>
+              <p>
+                From first hire to full team design, we can get you AI or human
+                employees for every function of your startup.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>
