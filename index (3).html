@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Perfect Team – We help startups find their employees</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f0f4f9; --dark: #0d1f35; --mid: #4a6580;
+      --blue: #1a6eb5; --blue-dark: #155fa0; --card-bg: #ffffff; --border: #dde4ed;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); min-height: 100vh; }
+
+    /* HERO */
+    .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 80px 24px 60px; gap: 20px; }
+    .hero h1 { font-family: 'Sora', sans-serif; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; max-width: 700px; line-height: 1.15; }
+    .hero p { font-size: 1rem; color: var(--mid); max-width: 420px; line-height: 1.6; }
+    .badge { display: inline-block; background: #e8eef6; border: 1.5px solid var(--border); color: var(--dark); font-size: 0.82rem; font-weight: 600; padding: 8px 18px; border-radius: 999px; }
+    .cta-btn { display: inline-block; background: var(--blue); color: #fff; font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 600; padding: 14px 32px; border-radius: 999px; text-decoration: none; transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 16px rgba(26,110,181,0.18); }
+    .cta-btn:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .tag { border: 1.5px solid var(--border); border-radius: 999px; padding: 6px 18px; font-size: 0.85rem; color: var(--dark); background: transparent; }
+
+    /* PRICING CALCULATOR */
+    .pricing-section { max-width: 700px; margin: 0 auto 60px; padding: 0 24px; }
+    .pricing-section h2 { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 700; text-align: center; margin-bottom: 8px; }
+    .pricing-section .sub { text-align: center; font-size: 0.9rem; color: var(--mid); margin-bottom: 32px; }
+    .pricing-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 36px 32px; }
+    .step-label { font-size: 0.75rem; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 14px; }
+    .step-block { margin-bottom: 28px; }
+    .pill-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .p-pill { padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--border); background: transparent; font-size: 0.85rem; cursor: pointer; color: var(--dark); font-family: 'Inter', sans-serif; transition: all 0.15s; }
+    .p-pill:hover { background: var(--bg); }
+    .p-pill.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .hc-row { display: flex; align-items: center; gap: 16px; }
+    .hc-row input[type=range] { flex: 1; accent-color: var(--blue); }
+    .hc-num { font-size: 1.4rem; font-weight: 700; min-width: 36px; text-align: right; }
+    .result-box { background: var(--bg); border-radius: 14px; padding: 24px; margin-top: 8px; display: none; }
+    .result-box.show { display: block; }
+    .result-label { font-size: 0.75rem; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px; }
+    .result-price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+    .result-price span { font-size: 2rem; font-weight: 700; color: var(--dark); }
+    .result-price em { font-size: 1rem; color: var(--mid); font-style: normal; }
+    .result-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; border-top: 1px solid var(--border); padding-top: 16px; }
+    .result-meta-item p:first-child { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mid); margin-bottom: 4px; }
+    .result-meta-item p:last-child { font-size: 0.95rem; font-weight: 600; }
+    .result-note { font-size: 0.78rem; color: var(--mid); font-style: italic; margin-bottom: 16px; }
+    .result-cta { display: block; width: 100%; padding: 13px; background: var(--blue); color: #fff; border: none; border-radius: 999px; font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .result-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* WHY */
+    .why { max-width: 640px; margin: 0 auto 48px; padding: 0 24px; }
+    .why-card { background: var(--card-bg); border-radius: 20px; border: 1.5px solid var(--border); padding: 40px 36px; text-align: center; }
+    .why-card h2 { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+    .why-card p { font-size: 0.95rem; color: var(--mid); line-height: 1.7; margin-bottom: 12px; }
+    .why-card .tagline { font-weight: 700; color: var(--dark); font-size: 0.95rem; }
+
+    /* FEATURES */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 80px; padding: 0 24px; }
+    .feature-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 32px 28px; }
+    .feature-card h3 { font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+    .feature-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.65; }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 32px 24px; font-size: 0.82rem; color: var(--mid); border-top: 1px solid var(--border); line-height: 2.4; }
+    footer a { color: var(--mid); text-decoration: none; margin: 0 8px; transition: color 0.2s; }
+    footer a:hover { color: var(--blue); }
+    .footer-email { color: var(--blue) !important; font-weight: 600; }
+    .sep { opacity: 0.35; margin: 0 2px; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,31,53,0.5); backdrop-filter: blur(6px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--card-bg); border-radius: 24px; border: 1.5px solid var(--border); padding: 44px 40px 36px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; box-shadow: 0 32px 80px rgba(0,0,0,0.15); animation: modal-in 0.2s ease; }
+    @keyframes modal-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .modal h2 { font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; }
+    .modal p, .modal li { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin-bottom: 10px; }
+    .modal ul { padding-left: 20px; }
+    .modal strong { color: var(--dark); }
+    .modal a { color: var(--blue); }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: var(--bg); border: 1.5px solid var(--border); border-radius: 999px; width: 30px; height: 30px; font-size: 0.85rem; cursor: pointer; color: var(--mid); display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+    .modal-close:hover { background: var(--border); }
+
+    /* COOKIE */
+    #cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--dark); color: #fff; padding: 13px 16px 13px 22px; border-radius: 14px; display: flex; align-items: center; gap: 14px; z-index: 9999; font-size: 0.82rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2); max-width: 500px; width: calc(100% - 48px); }
+    #cookie-banner p { line-height: 1.5; opacity: 0.85; flex: 1; }
+    #cookie-banner a { color: #7db8f7; cursor: pointer; }
+    #cookie-accept { background: var(--blue); color: #fff; border: none; padding: 8px 18px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    #cookie-accept:hover { background: var(--blue-dark); }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>We help startups find their employees</h1>
+    <p>We can find your team for free of charge. Pay only if you like the employees at the end.</p>
+    <span class="badge">No upfront payment. Results first.</span>
+    <a class="cta-btn" href="https://calendly.com/rodion-zhukovskyi/find-your-ai-employee" target="_blank" rel="noopener">Book on Calendly</a>
+    <div class="tags">
+      <span class="tag">AI Employees</span>
+      <span class="tag">Human Employees</span>
+      <span class="tag">Hybrid Teams</span>
+    </div>
+  </section>
+
+  <!-- PRICING CALCULATOR -->
+  <section class="pricing-section">
+    <h2>Get a price estimate</h2>
+    <p class="sub">Tell us what you need — we'll give you a ballpark. Final price confirmed on a free call.</p>
+    <div class="pricing-card">
+      <div class="step-block">
+        <p class="step-label">Step 1 — Type of hire</p>
+        <div class="pill-group">
+          <button class="p-pill" onclick="pSelect('type','human',this)">Human Employee</button>
+          <button class="p-pill" onclick="pSelect('type','ai',this)">AI Employee</button>
+          <button class="p-pill" onclick="pSelect('type','hybrid',this)">Hybrid Team</button>
+        </div>
+      </div>
+      <div class="step-block">
+        <p class="step-label">Step 2 — How many people?</p>
+        <div class="hc-row">
+          <input type="range" min="1" max="20" value="1" step="1" oninput="pUpdate()" id="p-headcount" />
+          <span class="hc-num" id="hc-big">1</span>
+        </div>
+      </div>
+      <div class="step-block">
+        <p class="step-label">Step 3 — Seniority</p>
+        <div class="pill-group">
+          <button class="p-pill" onclick="pSelect('level','junior',this)">Junior</button>
+          <button class="p-pill" onclick="pSelect('level','mid',this)">Mid-level</button>
+          <button class="p-pill" onclick="pSelect('level','senior',this)">Senior</button>
+          <button class="p-pill" onclick="pSelect('level','exec',this)">Executive</button>
+        </div>
+      </div>
+      <div class="step-block">
+        <p class="step-label">Step 4 — Function</p>
+        <div class="pill-group">
+          <button class="p-pill" onclick="pSelect('func','sales',this)">Sales</button>
+          <button class="p-pill" onclick="pSelect('func','ops',this)">Operations</button>
+          <button class="p-pill" onclick="pSelect('func','eng',this)">Engineering</button>
+          <button class="p-pill" onclick="pSelect('func','support',this)">Support</button>
+          <button class="p-pill" onclick="pSelect('func','marketing',this)">Marketing</button>
+          <button class="p-pill" onclick="pSelect('func','leadership',this)">Leadership</button>
+        </div>
+      </div>
+      <div class="step-block">
+        <p class="step-label">Step 5 — Urgency</p>
+        <div class="pill-group">
+          <button class="p-pill" onclick="pSelect('urgency','relaxed',this)">Flexible (4–8 weeks)</button>
+          <button class="p-pill" onclick="pSelect('urgency','normal',this)">Standard (2–4 weeks)</button>
+          <button class="p-pill" onclick="pSelect('urgency','urgent',this)">Urgent (under 2 weeks)</button>
+        </div>
+      </div>
+      <div class="result-box" id="p-result">
+        <p class="result-label">Estimated fee per hire</p>
+        <div class="result-price">
+          <span id="p-low">—</span>
+          <em>to</em>
+          <span id="p-high">—</span>
+        </div>
+        <div class="result-meta">
+          <div class="result-meta-item"><p>Timeline</p><p id="p-timeline">—</p></div>
+          <div class="result-meta-item"><p>Total hires</p><p id="p-total">—</p></div>
+        </div>
+        <p class="result-note">Paid only when you're happy with who we deliver. No upfront cost.</p>
+        <a class="result-cta" href="https://calendly.com/rodion-zhukovskyi/find-your-ai-employee" target="_blank" rel="noopener">Book a free call to confirm your quote →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="why-card">
+      <h2>Why founders trust us</h2>
+      <p>We keep hiring simple, honest, and result-focused. You always know the process, timeline, and next step before making a decision.</p>
+      <p>Our team screens carefully, communicates clearly, and only charges when you are happy with the people we deliver.</p>
+      <p class="tagline">Trusted process. Transparent pricing. Real outcomes.</p>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>Human Employees</h3>
+      <p>We source and screen high-quality human talent for operations, growth, sales, support, and leadership.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI Employees</h3>
+      <p>We help you identify and set up AI workers for content, customer service, lead qualification, automations, and analytics.</p>
+    </div>
+    <div class="feature-card">
+      <h3>For Everything You Need</h3>
+      <p>From first hire to full team design, we can get you AI or human employees for every function of your startup.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p><a href="mailto:team@yourperfectteam.com" class="footer-email">team@yourperfectteam.com</a></p>
+    <p>
+      <a href="#" onclick="openModal('privacy');return false;">Privacy Policy</a>
+      <span class="sep">·</span>
+      <a href="#" onclick="openModal('terms');return false;">Terms of Service</a>
+      <span class="sep">·</span>
+      <a href="#" onclick="openModal('cookies');return false;">Cookie Policy</a>
+    </p>
+    <p>&copy; 2026 Your Perfect Team · All rights reserved</p>
+  </footer>
+
+  <!-- PRIVACY MODAL -->
+  <div class="modal-overlay" id="modal-privacy">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+      <h2>🔒 Privacy Policy</h2>
+      <p><strong>Last updated: May 2026</strong></p>
+      <p>Your Perfect Team ("we", "us") respects your privacy. This policy explains what information we collect and how we use it.</p>
+      <p><strong>What we collect:</strong> When you book a call via Calendly, they collect your name and email. We do not store your personal data on our own servers.</p>
+      <p><strong>How we use it:</strong> Only to contact you about your hiring inquiry. We never sell or share your data with third parties for marketing.</p>
+      <p><strong>Your rights:</strong> You can request deletion of your data at any time by emailing <a href="mailto:team@yourperfectteam.com">team@yourperfectteam.com</a>.</p>
+      <p><strong>Third-party services:</strong> We use Calendly for booking and Vercel for hosting. Each has their own privacy policy.</p>
+    </div>
+  </div>
+
+  <!-- TERMS MODAL -->
+  <div class="modal-overlay" id="modal-terms">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('terms')">✕</button>
+      <h2>📄 Terms of Service</h2>
+      <p><strong>Last updated: May 2026</strong></p>
+      <p>By using yourperfectteam.com, you agree to these terms.</p>
+      <ul>
+        <li>We provide recruitment and staffing advisory services for startups.</li>
+        <li>You only pay if you are satisfied with the candidates we deliver.</li>
+        <li>We do not guarantee specific hiring outcomes or timelines.</li>
+        <li>All information on this website is for general informational purposes only.</li>
+        <li>We reserve the right to update these terms at any time.</li>
+        <li>This site is operated from Switzerland. Swiss law applies.</li>
+      </ul>
+      <p>Questions? Email <a href="mailto:team@yourperfectteam.com">team@yourperfectteam.com</a>.</p>
+    </div>
+  </div>
+
+  <!-- COOKIES MODAL -->
+  <div class="modal-overlay" id="modal-cookies">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('cookies')">✕</button>
+      <h2>🍪 Cookie Policy</h2>
+      <p><strong>What is a cookie?</strong> A cookie is a tiny text file a website saves on your device when you visit. It helps the site remember things — like that you've already accepted this notice.</p>
+      <p><strong>Do we use cookies?</strong> This website uses minimal cookies. Vercel (our host) and Calendly (our booking tool) may set their own technical cookies.</p>
+      <ul>
+        <li><strong>Essential cookies:</strong> Required for the site to work. Cannot be turned off.</li>
+        <li><strong>Analytics cookies:</strong> Help us understand how visitors use the site. No personal data is stored.</li>
+      </ul>
+      <p>We do <strong>not</strong> use advertising or tracking cookies.</p>
+    </div>
+  </div>
+
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner">
+    <p>🍪 We use essential cookies to keep this site running. <a href="#" onclick="openModal('cookies');return false;">Learn more</a></p>
+    <button id="cookie-accept" onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1')">Got it</button>
+  </div>
+
+  <script>
+    const pState = { type: null, level: null, func: null, urgency: null };
+    const pBase = { human: [1.5,3], ai: [0.8,2], hybrid: [2,4] };
+    const pLevel = { junior: 0.7, mid: 1.0, senior: 1.6, exec: 2.2 };
+    const pFunc = { sales: 1.1, ops: 1.0, eng: 1.2, support: 0.85, marketing: 1.0, leadership: 1.6 };
+    const pUrgency = { relaxed: 0.9, normal: 1.0, urgent: 1.25 };
+    const pTimeline = { relaxed: '4–8 weeks', normal: '2–4 weeks', urgent: '1–2 weeks' };
+
+    function pSelect(key, val, el) {
+      pState[key] = val;
+      el.closest('.pill-group').querySelectorAll('.p-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      pUpdate();
+    }
+
+    function pUpdate() {
+      const hc = parseInt(document.getElementById('p-headcount').value);
+      document.getElementById('hc-big').textContent = hc;
+      if (!pState.type || !pState.level || !pState.func || !pState.urgency) return;
+      const base = pBase[pState.type];
+      const low = Math.round(base[0] * pLevel[pState.level] * pFunc[pState.func] * pUrgency[pState.urgency] * 10) / 10;
+      const high = Math.round(base[1] * pLevel[pState.level] * pFunc[pState.func] * pUrgency[pState.urgency] * 10) / 10;
+      document.getElementById('p-low').textContent = '$' + low.toFixed(1) + 'k';
+      document.getElementById('p-high').textContent = '$' + high.toFixed(1) + 'k';
+      document.getElementById('p-timeline').textContent = pTimeline[pState.urgency];
+      document.getElementById('p-total').textContent = hc + (hc === 1 ? ' person' : ' people');
+      document.getElementById('p-result').classList.add('show');
+    }
+
+    if (localStorage.getItem('cookie-ok')) document.getElementById('cookie-banner').style.display = 'none';
+
+    function openModal(name) {
+      document.getElementById('modal-' + name).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(name) {
+      document.getElementById('modal-' + name).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.modal-overlay').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) { this.classList.remove('open'); document.body.style.overflow = ''; }
+      });
+    });
+  </script>
+
+</body>
+</html>
