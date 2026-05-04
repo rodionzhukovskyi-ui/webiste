@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Perfect Team</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a0a08'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='18' fill='%23c4973a'>YPT</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0a0a08; --paper: #f7f4ee; --cream: #ede9e0;
+      --gold: #c4973a; --gold-light: #e8c97a; --muted: #6b6558;
+      --border: rgba(10,10,8,0.1); --card: #ffffff; --green: #1a7a4a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9998; opacity: 0.6; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; border-bottom: 1px solid var(--border); background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-cta { background: var(--ink); color: var(--paper); padding: 10px 22px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
+    .nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+    /* HERO */
+    .hero { max-width: 1100px; margin: 0 auto; padding: 80px 48px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 24px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 em { font-style: italic; font-weight: 300; color: var(--gold); }
+    .hero-sub { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 32px; font-weight: 300; max-width: 420px; }
+    .hero-actions { display: flex; gap: 14px; align-items: center; margin-bottom: 36px; flex-wrap: wrap; }
+    .btn-primary { background: var(--ink); color: var(--paper); padding: 14px 28px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s, transform 0.15s; display: inline-block; font-family: 'DM Sans', sans-serif; }
+    .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+    .btn-ghost { color: var(--muted); font-size: 0.85rem; cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px; transition: color 0.2s; text-decoration: none; }
+    .btn-ghost:hover { color: var(--ink); }
+    .trust-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .trust-badge { display: flex; align-items: center; gap: 6px; background: var(--cream); border: 1px solid var(--border); padding: 6px 12px; border-radius: 999px; font-size: 0.78rem; }
+    .trust-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+    /* BOOKING CARD */
+    .booking-card { background: var(--card); border-radius: 16px; border: 1px solid var(--border); padding: 32px; box-shadow: 0 24px 60px rgba(10,10,8,0.08); }
+    .booking-card h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .booking-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
+    .booking-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .booking-feat { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--ink); }
+    .booking-feat .check { width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; }
+    .booking-btn { display: block; width: 100%; padding: 15px; background: var(--gold); color: var(--ink); border: none; border-radius: 8px; font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; cursor: pointer; text-align: center; transition: background 0.2s, transform 0.15s; letter-spacing: -0.01em; }
+    .booking-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .booking-note { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 12px; }
+
+    /* PROOF BAR */
+    .proof-bar { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 48px; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .proof-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--muted); }
+    .proof-item strong { color: var(--ink); font-size: 1.1rem; font-family: 'Fraunces', serif; }
+
+    /* SECTIONS */
+    .section { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
+    .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 500; margin-bottom: 16px; }
+    .section-title { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 520px; font-weight: 300; margin-bottom: 48px; }
+
+    /* WHY GRID */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; transition: transform 0.2s, box-shadow 0.2s; }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,10,8,0.08); }
+    .why-icon { font-size: 1.5rem; margin-bottom: 14px; }
+    .why-card h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .why-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+    /* PRICING CALCULATOR */
+    .calc-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .calc-steps { display: flex; flex-direction: column; gap: 16px; }
+    .calc-step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; }
+    .step-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 12px; font-weight: 500; }
+    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .p-pill { padding: 7px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--paper); font-size: 0.82rem; cursor: pointer; color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 400; transition: all 0.15s; }
+    .p-pill:hover { border-color: var(--gold); color: var(--gold); }
+    .p-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .slider-row { display: flex; align-items: center; gap: 16px; }
+    .slider-row input[type=range] { flex: 1; accent-color: var(--gold); }
+    .slider-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; min-width: 32px; }
+    .result-panel { background: var(--ink); color: var(--paper); border-radius: 16px; padding: 36px; position: sticky; top: 100px; min-height: 380px; display: flex; flex-direction: column; }
+    .rp-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(247,244,238,0.5); margin-bottom: 8px; }
+    .rp-price { font-family: 'Fraunces', serif; font-size: 2.6rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
+    .rp-sub { font-size: 0.8rem; color: rgba(247,244,238,0.45); margin-bottom: 28px; }
+    .rp-empty { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 300; font-style: italic; color: rgba(247,244,238,0.3); flex: 1; display: flex; align-items: center; }
+    .rp-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; border-top: 1px solid rgba(247,244,238,0.1); padding-top: 20px; }
+    .rmi-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(247,244,238,0.4); margin-bottom: 4px; }
+    .rmi-val { font-size: 1rem; font-weight: 500; }
+    .rp-note { font-size: 0.75rem; color: rgba(247,244,238,0.35); margin-bottom: 20px; line-height: 1.6; }
+    .rp-btn { display: block; width: 100%; padding: 14px; background: var(--gold); color: var(--ink); border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; text-align: center; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .rp-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: var(--paper); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; }
+    .footer-logo span { color: var(--gold); }
+    .footer-links { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    .footer-links a { color: rgba(247,244,238,0.5); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-email { color: var(--gold) !important; font-weight: 500; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,8,0.6); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--card); border-radius: 20px; border: 1px solid var(--border); padding: 44px 40px 36px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; box-shadow: 0 40px 80px rgba(10,10,8,0.2); animation: modal-in 0.25s ease; }
+    @keyframes modal-in { from { opacity: 0; transform: translateY(16px) scale(0.97); } to { opacity: 1; transform: none; } }
+    .modal h2 { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; }
+    .modal p, .modal li { font-size: 0.88rem; color: var(--muted); line-height: 1.8; margin-bottom: 10px; font-weight: 300; }
+    .modal ul { padding-left: 20px; }
+    .modal strong { color: var(--ink); font-weight: 500; }
+    .modal a { color: var(--gold); }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: var(--paper); border: 1px solid var(--border); border-radius: 999px; width: 32px; height: 32px; font-size: 0.85rem; cursor: pointer; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+    .modal-close:hover { background: var(--cream); }
+
+    /* COOKIE */
+    #cookie-banner { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 14px 18px 14px 24px; border-radius: 12px; display: flex; align-items: center; gap: 16px; z-index: 9999; font-size: 0.8rem; box-shadow: 0 8px 40px rgba(10,10,8,0.25); max-width: 520px; width: calc(100% - 48px); }
+    #cookie-banner p { line-height: 1.5; opacity: 0.75; flex: 1; }
+    #cookie-banner a { color: var(--gold-light); cursor: pointer; }
+    #cookie-accept { background: var(--gold); color: var(--ink); border: none; padding: 9px 20px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; cursor: pointer; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 40px; }
+      .calc-wrap { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .section { padding: 60px 24px; }
+      .proof-bar { gap: 24px; padding: 20px 24px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+      .result-panel { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Your<span>Perfect</span>Team</a>
+    <button class="nav-cta" onclick="openCalendly()">Book a free call</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Startup Recruiting</div>
+      <h1>Find your <em>perfect</em> team. Pay only when you're happy.</h1>
+      <p class="hero-sub">We source, screen, and deliver human talent, AI employees, and hybrid teams — for free. You only pay when you're satisfied with who we deliver.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openCalendly()">Book a free call →</button>
+        <button class="btn-ghost" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See pricing ↓</button>
+      </div>
+      <div class="trust-row">
+        <div class="trust-badge"><span class="dot"></span> No upfront cost</div>
+        <div class="trust-badge"><span class="dot"></span> Results first</div>
+        <div class="trust-badge"><span class="dot"></span> U.S. Based</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="booking-card">
+        <h3>Book your free discovery call</h3>
+        <p>Tell us what you need — we'll find your team. 30 minutes, no obligation, no upfront cost.</p>
+        <div class="booking-features">
+          <div class="booking-feat"><span class="check">✓</span> Human, AI, or hybrid hiring</div>
+          <div class="booking-feat"><span class="check">✓</span> Delivery in as little as 2 weeks</div>
+          <div class="booking-feat"><span class="check">✓</span> 60–80% cheaper than traditional agencies</div>
+          <div class="booking-feat"><span class="check">✓</span> Pay only when you're happy</div>
+        </div>
+        <button class="booking-btn" onclick="openCalendly()">Pick a time that works →</button>
+        <p class="booking-note">Powered by Calendly · Usually responds within 24h</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="proof-bar">
+    <div class="proof-item"><strong>100%</strong> success-fee model</div>
+    <div class="proof-item"><strong>AI + Human</strong> employee options</div>
+    <div class="proof-item"><strong>0–8 week</strong> delivery timelines</div>
+    <div class="proof-item"><strong>$0</strong> upfront cost</div>
+  </div>
+
+  <section class="section fade-up">
+    <div class="section-label">Why founders choose us</div>
+    <h2 class="section-title">Hiring that actually works for startups</h2>
+    <p class="section-sub">Simple, honest, and founder-friendly. You only know what you need to know, every step of the way.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3>Human Employees</h3>
+        <p>We source and screen high-quality talent for sales, operations, growth, support, and leadership — vetted for startup environments.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤖</div>
+        <h3>AI Employees</h3>
+        <p>We identify and deploy AI workers for content, customer service, lead qualification, analytics, and automation pipelines.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Hybrid Teams</h3>
+        <p>Human judgment with AI leverage. From first hire to full team design, we build what your startup actually needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section fade-up" id="pricing">
+    <div class="section-label">Transparent pricing</div>
+    <h2 class="section-title">Get your instant estimate</h2>
+    <p class="section-sub">No fixed rates. Every hire is different. Tell us what you need and we'll show you a ballpark — confirmed free on a call.</p>
+    <div class="calc-wrap">
+      <div class="calc-steps">
+        <div class="calc-step">
+          <p class="step-num">01 — Type of hire</p>
+          <div class="pill-row">
+            <button class="p-pill" onclick="pSelect('type','human',this)">Human</button>
+            <button class="p-pill" onclick="pSelect('type','ai',this)">AI Employee</button>
+            <button class="p-pill" onclick="pSelect('type','hybrid',this)">Hybrid Team</button>
+          </div>
+        </div>
+        <div class="calc-step">
+          <p class="step-num">02 — How many people?</p>
+          <div class="slider-row">
+            <input type="range" min="1" max="20" value="1" step="1" oninput="pUpdate()" id="p-headcount" />
+            <span class="slider-num" id="hc-big">1</span>
+          </div>
+        </div>
+        <div class="calc-step">
+          <p class="step-num">03 — Seniority level</p>
+          <div class="pill-row">
+            <button class="p-pill" onclick="pSelect('level','junior',this)">Junior</button>
+            <button class="p-pill" onclick="pSelect('level','mid',this)">Mid-level</button>
+            <button class="p-pill" onclick="pSelect('level','senior',this)">Senior</button>
+            <button class="p-pill" onclick="pSelect('level','exec',this)">Executive</button>
+          </div>
+        </div>
+        <div class="calc-step">
+          <p class="step-num">04 — Function</p>
+          <div class="pill-row">
+            <button class="p-pill" onclick="pSelect('func','sales',this)">Sales</button>
+            <button class="p-pill" onclick="pSelect('func','ops',this)">Operations</button>
+            <button class="p-pill" onclick="pSelect('func','eng',this)">Engineering</button>
+            <button class="p-pill" onclick="pSelect('func','support',this)">Support</button>
+            <button class="p-pill" onclick="pSelect('func','marketing',this)">Marketing</button>
+            <button class="p-pill" onclick="pSelect('func','leadership',this)">Leadership</button>
+          </div>
+        </div>
+        <div class="calc-step">
+          <p class="step-num">05 — Urgency</p>
+          <div class="pill-row">
+            <button class="p-pill" onclick="pSelect('urgency','relaxed',this)">Standard · 4–8 wks</button>
+            <button class="p-pill" onclick="pSelect('urgency','normal',this)">Fast · 1–4 wks</button>
+            <button class="p-pill" onclick="pSelect('urgency','urgent',this)">Express · &lt;2 wks</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-panel">
+        <div id="rp-empty" class="rp-empty">Select your options to see an estimate →</div>
+        <div id="rp-content" style="display:none; flex-direction:column; flex:1; justify-content:space-between;">
+          <div>
+            <p class="rp-label">Estimated fee per hire</p>
+            <p class="rp-price" id="rp-price">—</p>
+            <p class="rp-sub">success fee · paid only on approval</p>
+            <div class="rp-meta">
+              <div><p class="rmi-label">Timeline</p><p class="rmi-val" id="rp-timeline">—</p></div>
+              <div><p class="rmi-label">Total hires</p><p class="rmi-val" id="rp-total">—</p></div>
+            </div>
+          </div>
+          <div>
+            <p class="rp-note">Ballpark estimate only. Final pricing confirmed on your free discovery call — no obligation.</p>
+            <button class="rp-btn" onclick="openCalendly()">Confirm my exact quote — it's free →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <footer>
+    <div>
+      <div class="footer-logo">Your<span>Perfect</span>Team</div>
+      <div style="margin-top:6px; font-size:0.75rem; color:rgba(247,244,238,0.4)">United States · +1 813 557 8323</div>
+      <div style="margin-top:4px; font-size:0.75rem; color:rgba(247,244,238,0.3)">&copy; 2026 · All rights reserved</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:team@yourperfectteam.com" class="footer-email">team@yourperfectteam.com</a>
+      <a href="tel:+18135578323" style="color:rgba(247,244,238,0.5); font-size:0.8rem; text-decoration:none;">+1 813 557 8323</a>
+      <a href="#" onclick="openModal('privacy');return false;">Privacy</a>
+      <a href="#" onclick="openModal('terms');return false;">Terms</a>
+      <a href="#" onclick="openModal('cookies');return false;">Cookies</a>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modal-privacy">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+      <h2>Privacy Policy</h2>
+      <p><strong>Last updated: May 2026</strong></p>
+      <p>Your Perfect Team respects your privacy. When you book a call via Calendly, they collect your name and email. We do not store personal data on our own servers.</p>
+      <p>We use your information only to respond to your hiring inquiry and never share it with third parties for marketing.</p>
+      <p>Request deletion anytime: <a href="mailto:team@yourperfectteam.com">team@yourperfectteam.com</a></p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-terms">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('terms')">✕</button>
+      <h2>Terms of Service</h2>
+      <p><strong>Last updated: May 2026</strong></p>
+      <ul>
+        <li>We provide recruitment advisory services for startups.</li>
+        <li>You only pay if satisfied with the candidates we deliver.</li>
+        <li>We do not guarantee specific hiring outcomes or timelines.</li>
+        <li>All information on this site is for general informational purposes only.</li>
+        <li>We reserve the right to update these terms at any time.</li>
+        <li>This site is operated from the United States. Delaware law applies.</li>
+      </ul>
+      <p>Questions? <a href="mailto:team@yourperfectteam.com">team@yourperfectteam.com</a></p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-cookies">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('cookies')">✕</button>
+      <h2>Cookie Policy</h2>
+      <p><strong>What is a cookie?</strong> A tiny text file saved on your device when you visit. It remembers things like whether you've accepted this notice.</p>
+      <p>This site uses minimal cookies. Vercel and Calendly may set technical cookies to keep things working.</p>
+      <ul>
+        <li><strong>Essential:</strong> Required for the site to work.</li>
+        <li><strong>Analytics:</strong> Help us understand traffic. No personal data stored.</li>
+      </ul>
+      <p>We do <strong>not</strong> use advertising or tracking cookies.</p>
+    </div>
+  </div>
+
+  <div id="cookie-banner">
+    <p>We use essential cookies to keep this site running. <a href="#" onclick="openModal('cookies');return false;">Learn more</a></p>
+    <button id="cookie-accept" onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1')">Got it</button>
+  </div>
+
+  <script>
+    function openCalendly() {
+      if (typeof Calendly !== 'undefined') {
+        Calendly.initPopupWidget({ url: 'https://calendly.com/rodion-zhukovskyi/find-your-ai-employee' });
+      } else {
+        window.open('https://calendly.com/rodion-zhukovskyi/find-your-ai-employee', '_blank');
+      }
+    }
+
+    const pState = { type: null, level: null, func: null, urgency: null };
+    const pBase = { human: [0.5,1.5], ai: [0.3,0.8], hybrid: [0.8,2] };
+    const pLevel = { junior: 0.7, mid: 1.0, senior: 1.4, exec: 1.8 };
+    const pFunc = { sales: 1.1, ops: 1.0, eng: 1.15, support: 0.85, marketing: 1.0, leadership: 1.5 };
+    const pUrgency = { relaxed: 0.9, normal: 1.0, urgent: 1.2 };
+    const pTimeline = { relaxed: '4–8 weeks', normal: '1–4 weeks', urgent: 'Under 2 weeks' };
+
+    function pSelect(key, val, el) {
+      pState[key] = val;
+      el.closest('.pill-row').querySelectorAll('.p-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      pUpdate();
+    }
+
+    function pUpdate() {
+      const hc = parseInt(document.getElementById('p-headcount').value);
+      document.getElementById('hc-big').textContent = hc;
+      if (!pState.type || !pState.level || !pState.func || !pState.urgency) return;
+      const base = pBase[pState.type];
+      const low = Math.round(base[0] * pLevel[pState.level] * pFunc[pState.func] * pUrgency[pState.urgency] * 10) / 10;
+      const high = Math.round(base[1] * pLevel[pState.level] * pFunc[pState.func] * pUrgency[pState.urgency] * 10) / 10;
+      document.getElementById('rp-price').textContent = '$' + low.toFixed(1) + 'k – $' + high.toFixed(1) + 'k';
+      document.getElementById('rp-timeline').textContent = pTimeline[pState.urgency];
+      document.getElementById('rp-total').textContent = hc + (hc === 1 ? ' person' : ' people');
+      document.getElementById('rp-empty').style.display = 'none';
+      document.getElementById('rp-content').style.display = 'flex';
+    }
+
+    function openModal(name) { document.getElementById('modal-' + name).classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeModal(name) { document.getElementById('modal-' + name).classList.remove('open'); document.body.style.overflow = ''; }
+    document.querySelectorAll('.modal-overlay').forEach(el => {
+      el.addEventListener('click', function(e) { if (e.target === this) { this.classList.remove('open'); document.body.style.overflow = ''; } });
+    });
+
+    if (localStorage.getItem('cookie-ok')) document.getElementById('cookie-banner').style.display = 'none';
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
